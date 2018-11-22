@@ -9,6 +9,7 @@ let theWord = listeWord[Math.floor(Math.random() * listeWord.length)] ;
 let tehWordUpper = theWord.toUpperCase() ;  
 let listeChar = tehWordUpper.split("") ; 
 let arrayHiden = [] ; 
+let nbEchec = 0 ; 
 // creation du liste de boolean pour le hiden 
 listeChar.forEach(function(){
     arrayHiden.push(true) ; 
@@ -36,3 +37,31 @@ function updateGridWord(tableauChar)
         }
     }
 }
+
+function tentative(tryChar)
+{
+    let goodChar = false ; 
+    for(let i = 0 ; i < listeChar.length ; i++)
+    {
+        //test du caracterer 
+        if (tryChar == listeChar[i])
+        {
+            // la lettre est dans le mot 
+            goodChar = true ; 
+            arrayHiden[i] = false ; 
+        }
+
+    }
+    // fin de la recherche 
+    if (!goodChar)
+    {
+        // mauvaises lettre 
+        nbEchec++ ; 
+    }
+
+    updateGridWord(listeChar) ; 
+}
+
+
+// mise a jour au lancement 
+updateGridWord(listeChar) ; 
