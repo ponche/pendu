@@ -1,0 +1,11 @@
+.div
+{
+    width: 20px ; 
+    height: 20px ;
+    border: solid red 2px ;
+    background-color: antiquewhite ; 
+}
+.hidden
+{
+    background-color: brown ; 
+}
