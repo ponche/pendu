@@ -2,9 +2,10 @@
 let baliseInputWord = document.querySelector("#saisiWord") ; 
 let baliseZoneAlpha = document.querySelector("#zoneAlpha") ; 
 let baliseTheGridWord = document.querySelector("#theGridWord") ; 
+let baliseButtonChar = document.querySelector("#buttonSubmitChar") ; 
 
 // les declaration de variable 
-let listeWord = ["Con", "Mot", "Table", "Lapin", "javascript", "ajax", "python", "cobra"] ; 
+let listeWord = [ "Mot", "Table", "Lapin", "javascript", "ajax", "python", "cobra"] ; 
 let theWord = listeWord[Math.floor(Math.random() * listeWord.length)] ;
 let tehWordUpper = theWord.toUpperCase() ;  
 let listeChar = tehWordUpper.split("") ; 
@@ -19,6 +20,8 @@ listeChar.forEach(function(){
 // creation de la grille 
 function updateGridWord(tableauChar)
 {
+    // on efface la grid 
+    baliseTheGridWord.innerHTML = "" ; 
     // on cree la grid 
     for(let i = 0 ; i < listeChar.length ; i++)
     {
@@ -28,14 +31,18 @@ function updateGridWord(tableauChar)
         if (arrayHiden[i])
         {
             // la case est caché 
-            divChar.classList.add("hiden") ; 
+            divChar.classList.add("hidden") ; 
         }
         else
         {
             // la case est visible
             divChar.innerHTML = listeChar[i] ;  
         }
+        // assemlblage de la brique dans le mur 
+        baliseTheGridWord.appendChild(divChar) ; 
     }
+    // reset du input 
+    baliseInputWord.value = "" ; 
 }
 
 function tentative(tryChar)
@@ -58,9 +65,34 @@ function tentative(tryChar)
         // mauvaises lettre 
         nbEchec++ ; 
     }
+    if(checkWinner())
+    {
+        alert("bravo vous avez gagné !!!")
+    }
 
     updateGridWord(listeChar) ; 
 }
+
+// verification si gagner 
+function checkWinner()
+{
+    let winner = true ; 
+    arrayHiden.forEach(function(etatCasse){
+        if(etatCasse)
+        {
+            winner = false ; 
+        }
+    });
+
+    return winner ; 
+}
+
+// on met un ecouteur event 
+baliseButtonChar.addEventListener("click", function(){
+    let saisiChar = baliseInputWord.value ; 
+    let saisiCharUpper = saisiChar.toUpperCase() ; 
+    tentative(saisiCharUpper) ; 
+})
 
 
 // mise a jour au lancement 
