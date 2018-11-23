@@ -3,9 +3,10 @@ let baliseInputWord = document.querySelector("#saisiWord") ;
 let baliseZoneAlpha = document.querySelector("#zoneAlpha") ; 
 let baliseTheGridWord = document.querySelector("#theGridWord") ; 
 let baliseButtonChar = document.querySelector("#buttonSubmitChar") ; 
+let baliseFailScore = document.querySelector("#failScore") ; 
 
 // les declaration de variable 
-let listeWord = [ "Mot", "Table", "Lapin", "javascript", "ajax", "python", "cobra"] ; 
+let listeWord = [ "Mot", "Table", "Lapin", "javascript", "ajax", "python", "cobra","symfony", ] ; 
 let theWord = listeWord[Math.floor(Math.random() * listeWord.length)] ;
 let tehWordUpper = theWord.toUpperCase() ;  
 let listeChar = tehWordUpper.split("") ; 
@@ -40,6 +41,9 @@ function updateGridWord(tableauChar)
         }
         // assemlblage de la brique dans le mur 
         baliseTheGridWord.appendChild(divChar) ; 
+
+        // affichage des raté 
+        baliseFailScore.innerHTML = nbEchec ; 
     }
     // reset du input 
     baliseInputWord.value = "" ; 
@@ -93,6 +97,11 @@ baliseButtonChar.addEventListener("click", function(){
     let saisiCharUpper = saisiChar.toUpperCase() ; 
     tentative(saisiCharUpper) ; 
 })
+
+function changeScore()
+{
+    
+}
 
 
 // mise a jour au lancement 
