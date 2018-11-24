@@ -71,6 +71,13 @@ function tentative(tryChar)
     {
         // mauvaises lettre 
         nbEchec++ ; 
+        // on dessine le pendu 
+        drawPendu(nbEchec) ; 
+        if(nbEchec == 11)
+        {
+            // on laisse la posibilité au joueur de continuer après le message sans nouveau pop up
+            alert("Vous avez perdu !!!!") ; 
+        }
     }
     if(checkWinner())
     {
