@@ -13,3 +13,12 @@
 {
     background-color: brown ; 
 }
+#screenGame
+{
+    display: flex ; 
+}
+#conviction
+{
+    border: solid green 2px ; 
+    margin: 30px ; 
+}
