@@ -7,7 +7,7 @@ let baliseFailScore = document.querySelector("#failScore") ;
 let baliseConviction = document.querySelector("#conviction") ; 
 
 // les declaration de variable 
-let listeWord = [ "Mot", "Table", "Lapin", "javascript", "ajax", "python", "cobra","symfony", "concatenation"] ; 
+let listeWord = [ "Mot", "Table", "Lapin", "Xylophone", "Framework", "Procrastination", "javascript", "database", ,"upgrade", "update",  "android", "ajax", "python", "cobra","symfony", "concatenation"] ; 
 let theWord = listeWord[Math.floor(Math.random() * listeWord.length)] ;
 let tehWordUpper = theWord.toUpperCase() ;  
 let listeChar = tehWordUpper.split("") ; 
